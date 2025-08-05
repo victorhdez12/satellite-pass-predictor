@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+.env.local
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Database
+postgres_data/
+
+# Build outputs
+dist/
+.parcel-cache/
+
+# Certificates and keys
+*.pem
+*.key
+*.p12
+*.crt
+id_rsa*
+.ssh/
+
+# Virtual env
+.venv/
+venv/

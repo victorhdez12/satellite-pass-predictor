@@ -33,6 +33,7 @@ cd munich  # or your project folder name
 environment:
   - SPACETRACK_USERNAME=your-email@example.com
   - SPACETRACK_PASSWORD=your-password
+  - I have left my credentials for you to make it easier and quicker to run and check
 ```
 
 3. **Start the application**
@@ -283,14 +284,5 @@ npm start
 
 This project is developed as a technical demonstration for European Space Imaging.
 
-## 🤝 Contributing
-
-This is a technical challenge implementation. For questions or clarifications, please contact the development team.
-
-## 📞 Support
-
-For technical issues or questions about this implementation, please reach out via the provided contact channels.
-
----
 
 **Built with ❤️ for Orbital Edge Imaging**
