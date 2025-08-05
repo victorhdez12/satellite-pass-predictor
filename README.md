@@ -283,6 +283,3 @@ npm start
 ## 📝 License
 
 This project is developed as a technical demonstration for European Space Imaging.
-
-
-**Built with ❤️ for Orbital Edge Imaging**
