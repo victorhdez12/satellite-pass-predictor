@@ -1,0 +1,16 @@
+{
+  "name": "oei-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "@types/leaflet": "^1.9.20",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^4.0.0"
+  }
+}

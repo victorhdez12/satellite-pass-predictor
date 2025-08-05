@@ -1,0 +1,16 @@
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Western Hemisphere AOI - Complete Coverage"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [-180.0, -85.0],
+      [-180.0, 85.0],
+      [0.0, 85.0],
+      [0.0, -85.0],
+      [-180.0, -85.0]
+    ]]
+  }
+}
