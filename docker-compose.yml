@@ -4,7 +4,7 @@ services:
     image: postgis/postgis:13-3.3
     environment:
       POSTGRES_USER: oei
-      POSTGRES_PASSWORD: oei
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       POSTGRES_DB: oei
     ports:
       - "5432:5432"
@@ -27,9 +27,9 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://oei:oei@db:5432/oei
-      - SPACETRACK_USERNAME=victor.legazpi@gmail.com
-      - SPACETRACK_PASSWORD=Palmeradechocolate127
+      - DATABASE_URL=postgresql://oei:${POSTGRES_PASSWORD}@db:5432/oei
+      - SPACETRACK_USERNAME=${SPACETRACK_USERNAME:?Set SPACETRACK_USERNAME in .env}
+      - SPACETRACK_PASSWORD=${SPACETRACK_PASSWORD:?Set SPACETRACK_PASSWORD in .env}
     volumes:
       - ./backend/app:/code/app
     networks:

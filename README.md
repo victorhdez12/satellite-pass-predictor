@@ -21,20 +21,19 @@ A professional satellite pass prediction system that calculates orbital overpass
 
 ### Setup
 
-1. **Navigate to project directory**
+1. **Clone the repository**
 ```bash
-cd munich  # or your project folder name
+git clone https://github.com/victorhdez12/satellite-pass-predictor.git
+cd satellite-pass-predictor
 ```
 
-2. **Configure Space-Track credentials**
-   
-   Update `docker-compose.yml` with your Space-Track.org credentials:
-```yaml
-environment:
-  - SPACETRACK_USERNAME=your-email@example.com
-  - SPACETRACK_PASSWORD=your-password
-  - I have left my credentials for you to make it easier and quicker to run and check
+2. **Configure your credentials**
+
+   Copy the template and fill in your own Space-Track.org account and a local database password:
+```bash
+cp .env.example .env
 ```
+   Docker Compose reads `.env` automatically and refuses to start if a required value is missing. `.env` is git-ignored: credentials never live in the repository.
 
 3. **Start the application**
 ```bash
@@ -147,6 +146,23 @@ GET /tles/          # List all TLEs
 - `max_elevation` - Maximum elevation angle (degrees)
 - `track` - PostGIS LINESTRING of sub-satellite track
 
+## 🗂️ Repository Structure
+
+```
+backend/               FastAPI service: API, SGP4 propagation, PostGIS models (see backend/README.md)
+frontend/              Leaflet + TypeScript map client built with Parcel (see frontend/README.md)
+madrid.geojson         Sample AOI over Madrid
+norway.geojson         Sample AOI over Norway
+docker-compose.yml     PostGIS database + backend API
+.env.example           Template for local credentials
+```
+
+## 🔐 Security
+
+- Credentials are read from environment variables only; nothing secret is committed.
+- `.env`, session cookies, virtual environments, `node_modules` and build outputs are git-ignored.
+- If you fork this project, keep your Space-Track.org credentials in `.env` and respect the Space-Track user agreement (no redistribution of credentials or data).
+
 ## 🔧 Development
 
 ### Local Development Setup
@@ -173,14 +189,15 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 # Frontend (development mode)
 cd frontend
-npm run dev
+npm start
 ```
 
 ### Environment Variables
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `DATABASE_URL` | PostgreSQL connection string | Yes |
+| `POSTGRES_PASSWORD` | Local PostGIS password (Docker Compose) | Yes |
+| `DATABASE_URL` | PostgreSQL connection string (set by Compose; only needed when running the backend outside Docker) | Outside Docker |
 | `SPACETRACK_USERNAME` | Space-Track.org username | Yes |
 | `SPACETRACK_PASSWORD` | Space-Track.org password | Yes |
 
@@ -259,7 +276,7 @@ docker-compose logs db
 ```
 
 **Space-Track Authentication Failed**
-- Verify credentials in `docker-compose.yml`
+- Verify the credentials in your local `.env` (see `.env.example`)
 - Ensure Space-Track.org account is active
 
 **Frontend Not Loading**
