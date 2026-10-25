@@ -36,3 +36,7 @@ id_rsa*
 # Virtual env
 .venv/
 venv/
+
+# Session cookies and caches
+cookies.txt
+.cache/
